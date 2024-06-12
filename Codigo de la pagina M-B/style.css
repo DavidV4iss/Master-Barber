@@ -20,15 +20,32 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 } 
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.capa {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    /* mix-blend-mode: overlay; */
+}
 
- .header {
-    background-image: url(images/bg.jpg);
+.header{
+    /* background-image: url(images/bg.jpg); */
     background-position: center; 
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 70vh; 
     align-items: center;
-}
+} 
 
 .menu {
     margin-right: 50px;
@@ -46,6 +63,8 @@ body {
     margin-top: 10px;
     width: 100px;
     height: 100px;
+    position: relative;
+    z-index: 2;
 }
 
 .menu .navbar ul li {
@@ -80,6 +99,8 @@ body {
 
  .header-txt {
     text-align:center;
+    position: relative;
+    z-index: 2;
 } 
 
 .header-txt p {
@@ -196,7 +217,7 @@ hr {
     width: 80px;
 }
 .jkjk{
-    border: 1px solid #CF2D3A;
+    border: 1px solid #4e4a4a;
     width: 100%;
 }
 
@@ -370,7 +391,8 @@ textarea {
 
 
 
-/* Estilo básico para el Slider*/
+/* Estilo para el Slider*/
+
 #gallery {
     width: 600px;
     margin: auto;
@@ -378,13 +400,12 @@ textarea {
  }
  
  .gallery-container {
-    margin-bottom: 50px ;
+    margin-bottom: 1px ;
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.8s ease-in-out;
  }
  
  .gallery-item {
-    width: 100px;
     min-width: 100%;
     box-sizing: border-box;
  }
@@ -398,6 +419,7 @@ textarea {
  
  
  /* Navegación del Slider */
+
  .gallery-navigation {
     display: flex;
     justify-content: space-between;
@@ -420,7 +442,7 @@ textarea {
 
  .ffff {
     text-align: center;
-    margin-top: 10px;
+    margin-top: 1px;
     color: #FFFFFF;
  }
 
