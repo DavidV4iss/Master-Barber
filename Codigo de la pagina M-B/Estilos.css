@@ -42,11 +42,11 @@ body{
     height: 100%;
 }
 
-/* #body{
+#body{
     min-height: 100vh;
     background: url(./images/bg-2.png) no-repeat center center fixed ;
     background-size: cover;
-} */
+}
 
 .container{
     background-color: white;
