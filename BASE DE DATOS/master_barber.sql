@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2024 a las 02:40:48
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.1.17
+-- Tiempo de generación: 10-07-2024 a las 20:48:54
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,14 +26,14 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `carrito_compras`
 --
--- Creación: 29-05-2024 a las 20:48:32
+-- Creación: 10-07-2024 a las 18:25:12
 --
 
 CREATE TABLE `carrito_compras` (
-  `id_carrito_compras` int(11) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL,
-  `id_compra` int(11) NOT NULL
+  `id_carrito_compras` varchar(255) NOT NULL,
+  `id_producto` varchar(255) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL,
+  `id_compra` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -41,12 +41,12 @@ CREATE TABLE `carrito_compras` (
 --
 -- Estructura de tabla para la tabla `categoria_producto`
 --
--- Creación: 29-05-2024 a las 20:22:57
+-- Creación: 10-07-2024 a las 18:11:58
 --
 
 CREATE TABLE `categoria_producto` (
-  `id_categoria_producto` int(11) NOT NULL,
-  `Categoria` varchar(250) NOT NULL
+  `id_categoria_producto` varchar(255) NOT NULL,
+  `categoria` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -54,16 +54,16 @@ CREATE TABLE `categoria_producto` (
 --
 -- Estructura de tabla para la tabla `compra`
 --
--- Creación: 29-05-2024 a las 20:41:55
+-- Creación: 10-07-2024 a las 18:22:26
 --
 
 CREATE TABLE `compra` (
-  `id_compra` int(11) NOT NULL,
-  `Descripcion` varchar(250) NOT NULL,
-  `Precio_Total` int(250) NOT NULL,
-  `Tipo_Pago` varchar(250) NOT NULL,
-  `id_producto` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_compra` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `precio_total` varchar(255) NOT NULL,
+  `tipo_pago` varchar(255) NOT NULL,
+  `id_producto` varchar(255) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -71,14 +71,14 @@ CREATE TABLE `compra` (
 --
 -- Estructura de tabla para la tabla `factura`
 --
--- Creación: 29-05-2024 a las 21:06:54
+-- Creación: 10-07-2024 a las 18:28:45
 --
 
 CREATE TABLE `factura` (
-  `id_factura` int(11) NOT NULL,
-  `Fecha` int(11) NOT NULL,
-  `id_compra` int(11) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_factura` varchar(255) NOT NULL,
+  `fecha` datetime(6) NOT NULL,
+  `id_compra` varchar(255) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -86,13 +86,13 @@ CREATE TABLE `factura` (
 --
 -- Estructura de tabla para la tabla `horario`
 --
--- Creación: 29-05-2024 a las 21:22:14
+-- Creación: 10-07-2024 a las 18:35:14
 --
 
 CREATE TABLE `horario` (
-  `id_horario` int(11) NOT NULL,
-  `Fecha_Hora` datetime(6) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_horario` varchar(255) NOT NULL,
+  `fecha_hora` datetime(6) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -100,16 +100,16 @@ CREATE TABLE `horario` (
 --
 -- Estructura de tabla para la tabla `producto`
 --
--- Creación: 29-05-2024 a las 20:13:10
+-- Creación: 10-07-2024 a las 18:08:12
 --
 
 CREATE TABLE `producto` (
-  `id_producto` int(11) NOT NULL,
-  `Nombre` varchar(250) NOT NULL,
-  `Descripcion` varchar(250) NOT NULL,
-  `Cantidad` int(250) NOT NULL,
-  `id_categoria_producto` int(11) NOT NULL,
-  `Precio` int(250) NOT NULL
+  `id_producto` varchar(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `cantidad` varchar(255) NOT NULL,
+  `id_categoria_producto` varchar(255) NOT NULL,
+  `precio` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -117,14 +117,14 @@ CREATE TABLE `producto` (
 --
 -- Estructura de tabla para la tabla `recordatorio`
 --
--- Creación: 29-05-2024 a las 21:18:12
+-- Creación: 10-07-2024 a las 18:32:38
 --
 
 CREATE TABLE `recordatorio` (
-  `id_recordatorio` int(11) NOT NULL,
-  `Mensaje` varchar(250) NOT NULL,
-  `id_ReservaTurno` int(11) NOT NULL,
-  `id_horario` int(11) NOT NULL
+  `id_recordatorio` varchar(255) NOT NULL,
+  `mensaje` varchar(255) NOT NULL,
+  `id_ReservaTurno` varchar(255) NOT NULL,
+  `id_horario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -132,16 +132,16 @@ CREATE TABLE `recordatorio` (
 --
 -- Estructura de tabla para la tabla `reserva_turno`
 --
--- Creación: 29-05-2024 a las 20:05:44
+-- Creación: 10-07-2024 a las 18:03:11
 --
 
 CREATE TABLE `reserva_turno` (
-  `id_ReservaTurno` int(11) NOT NULL,
-  `id_TipoServicio` int(11) NOT NULL,
-  `id_horario` int(11) NOT NULL,
-  `aceptar_turno` tinyint(4) NOT NULL,
-  `cancelar_turno` tinyint(4) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_ReservaTurno` varchar(255) NOT NULL,
+  `id_TipoServicio` varchar(255) NOT NULL,
+  `id_horario` varchar(255) NOT NULL,
+  `Aceptar_Turno` tinyint(2) NOT NULL,
+  `Cancelar_Turno` tinyint(2) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -149,38 +149,28 @@ CREATE TABLE `reserva_turno` (
 --
 -- Estructura de tabla para la tabla `rol`
 --
--- Creación: 29-05-2024 a las 19:34:54
--- Última actualización: 29-05-2024 a las 20:14:30
+-- Creación: 10-07-2024 a las 17:57:56
 --
 
 CREATE TABLE `rol` (
-  `id_rol` int(11) NOT NULL,
-  `Nombre_rol` varchar(250) NOT NULL
+  `id_rol` varchar(255) NOT NULL,
+  `nombre_rol` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `rol`
---
-
-INSERT INTO `rol` (`id_rol`, `Nombre_rol`) VALUES
-(1, 'Administrador'),
-(2, 'Barbero'),
-(3, 'Cliente');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tipo_servicio`
 --
--- Creación: 29-05-2024 a las 22:19:28
+-- Creación: 10-07-2024 a las 18:18:13
 --
 
 CREATE TABLE `tipo_servicio` (
-  `id_TipoServicio` int(11) NOT NULL,
-  `Nombre` varchar(250) NOT NULL,
-  `Descripcion` varchar(250) NOT NULL,
-  `Precio` int(250) NOT NULL,
-  `id_usuario` int(11) NOT NULL
+  `id_tipo_servicio` varchar(255) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `precio` varchar(255) NOT NULL,
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -188,27 +178,18 @@ CREATE TABLE `tipo_servicio` (
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
--- Creación: 29-05-2024 a las 19:44:12
--- Última actualización: 29-05-2024 a las 19:55:08
+-- Creación: 10-07-2024 a las 17:53:39
 --
 
 CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
-  `Nombre_usuario` varchar(250) NOT NULL,
-  `Email` varchar(250) NOT NULL,
-  `Nit` int(10) NOT NULL,
-  `Telefono` bigint(20) NOT NULL,
-  `Contraseña` varchar(250) NOT NULL,
-  `id_rol` int(11) NOT NULL
+  `id_usuario` varchar(255) NOT NULL,
+  `nombre_usuario` varchar(255) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `nit` int(55) NOT NULL,
+  `telefono` int(55) NOT NULL,
+  `contraseña` int(55) NOT NULL,
+  `id_rol` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id_usuario`, `Nombre_usuario`, `Email`, `Nit`, `Telefono`, `Contraseña`, `id_rol`) VALUES
-(1, 'David Vaiss', 'cristianrueda0313@gmail.com', 1014481682, 3044495505, '1234567cristian.', 1),
-(3, 'Fidel ', 'fideljoseespi10@gmail.com', 1234567891, 302202022, '1234567fidel.', 3);
 
 --
 -- Índices para tablas volcadas
@@ -234,7 +215,7 @@ ALTER TABLE `categoria_producto`
 --
 ALTER TABLE `compra`
   ADD PRIMARY KEY (`id_compra`),
-  ADD KEY `id_producto` (`id_producto`),
+  ADD KEY `compra_ibfk_1` (`id_producto`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
@@ -264,9 +245,8 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `recordatorio`
   ADD PRIMARY KEY (`id_recordatorio`),
-  ADD KEY `id_recordatorio` (`id_recordatorio`,`id_ReservaTurno`),
-  ADD KEY `id_horario` (`id_horario`),
-  ADD KEY `id_ReservaTurno` (`id_ReservaTurno`);
+  ADD KEY `id_ReservaTurno` (`id_ReservaTurno`),
+  ADD KEY `id_horario` (`id_horario`);
 
 --
 -- Indices de la tabla `reserva_turno`
@@ -287,7 +267,8 @@ ALTER TABLE `rol`
 -- Indices de la tabla `tipo_servicio`
 --
 ALTER TABLE `tipo_servicio`
-  ADD PRIMARY KEY (`id_TipoServicio`);
+  ADD PRIMARY KEY (`id_tipo_servicio`),
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -297,76 +278,6 @@ ALTER TABLE `usuarios`
   ADD KEY `id_rol` (`id_rol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `carrito_compras`
---
-ALTER TABLE `carrito_compras`
-  MODIFY `id_carrito_compras` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `categoria_producto`
---
-ALTER TABLE `categoria_producto`
-  MODIFY `id_categoria_producto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `compra`
---
-ALTER TABLE `compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `factura`
---
-ALTER TABLE `factura`
-  MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `horario`
---
-ALTER TABLE `horario`
-  MODIFY `id_horario` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `producto`
---
-ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `recordatorio`
---
-ALTER TABLE `recordatorio`
-  MODIFY `id_recordatorio` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `reserva_turno`
---
-ALTER TABLE `reserva_turno`
-  MODIFY `id_ReservaTurno` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `rol`
---
-ALTER TABLE `rol`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT de la tabla `tipo_servicio`
---
-ALTER TABLE `tipo_servicio`
-  MODIFY `id_TipoServicio` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- Restricciones para tablas volcadas
 --
 
@@ -374,56 +285,62 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `carrito_compras`
 --
 ALTER TABLE `carrito_compras`
-  ADD CONSTRAINT `carrito_compras_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
-  ADD CONSTRAINT `carrito_compras_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `carrito_compras_ibfk_3` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`);
+  ADD CONSTRAINT `carrito_compras_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `carrito_compras_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `carrito_compras_ibfk_3` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `compra`
 --
 ALTER TABLE `compra`
-  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
-  ADD CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `compra_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
-  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`),
-  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `horario`
 --
 ALTER TABLE `horario`
-  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
+  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria_producto`) REFERENCES `categoria_producto` (`id_categoria_producto`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`id_categoria_producto`) REFERENCES `categoria_producto` (`id_categoria_producto`);
 
 --
 -- Filtros para la tabla `recordatorio`
 --
 ALTER TABLE `recordatorio`
-  ADD CONSTRAINT `recordatorio_ibfk_1` FOREIGN KEY (`id_ReservaTurno`) REFERENCES `reserva_turno` (`id_ReservaTurno`),
-  ADD CONSTRAINT `recordatorio_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`);
+  ADD CONSTRAINT `recordatorio_ibfk_1` FOREIGN KEY (`id_ReservaTurno`) REFERENCES `reserva_turno` (`id_ReservaTurno`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `recordatorio_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reserva_turno`
 --
 ALTER TABLE `reserva_turno`
-  ADD CONSTRAINT `reserva_turno_ibfk_1` FOREIGN KEY (`id_TipoServicio`) REFERENCES `tipo_servicio` (`id_TipoServicio`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reserva_turno_ibfk_1` FOREIGN KEY (`id_TipoServicio`) REFERENCES `tipo_servicio` (`id_tipo_servicio`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reserva_turno_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reserva_turno_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tipo_servicio`
+--
+ALTER TABLE `tipo_servicio`
+  ADD CONSTRAINT `tipo_servicio_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
