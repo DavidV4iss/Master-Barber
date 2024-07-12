@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2024 a las 20:45:11
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Tiempo de generación: 12-07-2024 a las 21:35:56
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -26,23 +26,31 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `carrito_compras`
 --
--- Creación: 10-07-2024 a las 18:25:12
+-- Creación: 12-07-2024 a las 19:20:04
+-- Última actualización: 12-07-2024 a las 19:20:24
 --
 
 CREATE TABLE `carrito_compras` (
   `id_carrito_compras` varchar(255) NOT NULL,
   `id_producto` varchar(255) NOT NULL,
-  `id_usuario` varchar(255) NOT NULL,
-  `id_compra` varchar(255) NOT NULL
+  `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `carrito_compras`
+--
+
+INSERT INTO `carrito_compras` (`id_carrito_compras`, `id_producto`, `id_usuario`) VALUES
+('CAR1', 'P1', 'U3'),
+('CAR2', 'P2', 'U2'),
+('CAR3', 'P3', 'U1');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categoria_producto`
 --
--- Creación: 10-07-2024 a las 18:11:58
--- Última actualización: 11-07-2024 a las 16:14:07
+-- Creación: 12-07-2024 a las 16:10:17
 --
 
 CREATE TABLE `categoria_producto` (
@@ -64,8 +72,8 @@ INSERT INTO `categoria_producto` (`id_categoria_producto`, `categoria`) VALUES
 --
 -- Estructura de tabla para la tabla `compra`
 --
--- Creación: 11-07-2024 a las 16:45:54
--- Última actualización: 11-07-2024 a las 17:42:38
+-- Creación: 12-07-2024 a las 16:10:17
+-- Última actualización: 12-07-2024 a las 19:07:43
 --
 
 CREATE TABLE `compra` (
@@ -82,15 +90,17 @@ CREATE TABLE `compra` (
 --
 
 INSERT INTO `compra` (`id_compra`, `descripcion`, `precio_total`, `id_tipo_pago`, `id_producto`, `id_usuario`) VALUES
-('C1', 'Camiseta Oversize', '78.000', 'TP1', 'P1', 'U3');
+('C1', 'Camiseta Oversize', '78.000', 'TP1', 'P1', 'U3'),
+('C2', 'Gorra morada', '50.000', 'TP2', 'P2', 'U3'),
+('C3', 'Expansion 8', '8.000', 'TP3', 'P3', 'U3');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `factura`
 --
--- Creación: 10-07-2024 a las 18:28:45
--- Última actualización: 11-07-2024 a las 18:31:17
+-- Creación: 12-07-2024 a las 16:10:17
+-- Última actualización: 12-07-2024 a las 19:27:14
 --
 
 CREATE TABLE `factura` (
@@ -105,29 +115,16 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`id_factura`, `fecha`, `id_compra`, `id_usuario`) VALUES
-('F1', '2025-04-03 20:50:10.000000', 'C1', 'U3');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `horario`
---
--- Creación: 10-07-2024 a las 18:35:14
---
-
-CREATE TABLE `horario` (
-  `id_horario` varchar(255) NOT NULL,
-  `fecha_hora` datetime(6) NOT NULL,
-  `id_usuario` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+('F1', '2025-04-03 20:50:10.000000', 'C1', 'U3'),
+('F2', '2026-07-24 12:00:00.000000', 'C2', 'U3'),
+('F3', '2027-08-24 22:20:00.000000', 'C3', 'U3');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `producto`
 --
--- Creación: 10-07-2024 a las 18:08:12
--- Última actualización: 11-07-2024 a las 16:30:38
+-- Creación: 12-07-2024 a las 16:10:17
 --
 
 CREATE TABLE `producto` (
@@ -156,40 +153,58 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `cantidad`, `id_
 --
 -- Estructura de tabla para la tabla `recordatorio`
 --
--- Creación: 10-07-2024 a las 18:32:38
+-- Creación: 12-07-2024 a las 16:21:35
+-- Última actualización: 12-07-2024 a las 19:01:42
 --
 
 CREATE TABLE `recordatorio` (
   `id_recordatorio` varchar(255) NOT NULL,
   `mensaje` varchar(255) NOT NULL,
-  `id_ReservaTurno` varchar(255) NOT NULL,
-  `id_horario` varchar(255) NOT NULL
+  `id_ReservaTurno` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `recordatorio`
+--
+
+INSERT INTO `recordatorio` (`id_recordatorio`, `mensaje`, `id_ReservaTurno`) VALUES
+('RO1', 'Recuerda que tienes un turno reservado', 'RT1'),
+('RO2', 'Recuerda que tienes un turno reservado.', 'RT2'),
+('RO3', 'Recuerda que tienes un turno reservado..', 'RT3');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `reserva_turno`
 --
--- Creación: 10-07-2024 a las 18:03:11
+-- Creación: 12-07-2024 a las 18:32:02
+-- Última actualización: 12-07-2024 a las 18:41:07
 --
 
 CREATE TABLE `reserva_turno` (
   `id_ReservaTurno` varchar(255) NOT NULL,
   `id_TipoServicio` varchar(255) NOT NULL,
-  `id_horario` varchar(255) NOT NULL,
-  `Aceptar_Turno` tinyint(2) NOT NULL,
-  `Cancelar_Turno` tinyint(2) NOT NULL,
+  `Fecha_Hora` datetime(6) NOT NULL,
+  `Aceptar_Turno` varchar(2) NOT NULL,
+  `Cancelar_Turno` varchar(2) NOT NULL,
   `id_usuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `reserva_turno`
+--
+
+INSERT INTO `reserva_turno` (`id_ReservaTurno`, `id_TipoServicio`, `Fecha_Hora`, `Aceptar_Turno`, `Cancelar_Turno`, `id_usuario`) VALUES
+('RT1', 'TS1', '2025-04-07 20:20:20.000000', 'SI', 'NO', 'U3'),
+('RT2', 'TS2', '2025-06-12 15:30:20.000000', 'NO', 'SI', 'U3'),
+('RT3', 'TS1', '2025-06-12 15:30:20.000000', 'SI', 'NO', 'U3');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `rol`
 --
--- Creación: 10-07-2024 a las 17:57:56
--- Última actualización: 11-07-2024 a las 15:41:31
+-- Creación: 12-07-2024 a las 16:10:17
 --
 
 CREATE TABLE `rol` (
@@ -211,8 +226,7 @@ INSERT INTO `rol` (`id_rol`, `nombre_rol`) VALUES
 --
 -- Estructura de tabla para la tabla `tipo_pago`
 --
--- Creación: 11-07-2024 a las 16:45:14
--- Última actualización: 11-07-2024 a las 17:34:09
+-- Creación: 12-07-2024 a las 16:10:17
 --
 
 CREATE TABLE `tipo_pago` (
@@ -235,8 +249,7 @@ INSERT INTO `tipo_pago` (`id_tipo_pago`, `TipoPago`) VALUES
 --
 -- Estructura de tabla para la tabla `tipo_servicio`
 --
--- Creación: 10-07-2024 a las 18:18:13
--- Última actualización: 11-07-2024 a las 16:00:28
+-- Creación: 12-07-2024 a las 16:10:17
 --
 
 CREATE TABLE `tipo_servicio` (
@@ -260,8 +273,8 @@ INSERT INTO `tipo_servicio` (`id_tipo_servicio`, `nombre`, `descripcion`, `preci
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
--- Creación: 10-07-2024 a las 17:53:39
--- Última actualización: 11-07-2024 a las 15:53:00
+-- Creación: 12-07-2024 a las 16:10:17
+-- Última actualización: 12-07-2024 a las 19:08:36
 --
 
 CREATE TABLE `usuarios` (
@@ -281,7 +294,7 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `email`, `nit`, `telefono`, `contraseña`, `id_rol`) VALUES
 ('U1', 'Cristian Rueda', 'cristianrueda0313@gmail.com', 1014481682, 2147483647, 'Cris7777.', 'R1'),
 ('U2', 'Fidel Espitia', 'fideljoseespi10@gmail.com', 1028662003, 2147483647, 'fidel7777.', 'R2'),
-('U3', 'Dvaid Vaiss', 'cristianrueda0313@gmail.com', 1014481682, 2147483647, 'david7777.', 'R3');
+('U3', 'David Vaiss', 'cristianrueda0313@gmail.com', 1014481682, 2147483647, 'david7777.', 'R3');
 
 --
 -- Índices para tablas volcadas
@@ -293,8 +306,7 @@ INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `email`, `nit`, `telefon
 ALTER TABLE `carrito_compras`
   ADD PRIMARY KEY (`id_carrito_compras`),
   ADD KEY `id_producto` (`id_producto`),
-  ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_compra` (`id_compra`);
+  ADD KEY `id_usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `categoria_producto`
@@ -320,13 +332,6 @@ ALTER TABLE `factura`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Indices de la tabla `horario`
---
-ALTER TABLE `horario`
-  ADD PRIMARY KEY (`id_horario`),
-  ADD KEY `id_usuario` (`id_usuario`);
-
---
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -338,8 +343,7 @@ ALTER TABLE `producto`
 --
 ALTER TABLE `recordatorio`
   ADD PRIMARY KEY (`id_recordatorio`),
-  ADD KEY `id_ReservaTurno` (`id_ReservaTurno`),
-  ADD KEY `id_horario` (`id_horario`);
+  ADD KEY `id_ReservaTurno` (`id_ReservaTurno`);
 
 --
 -- Indices de la tabla `reserva_turno`
@@ -347,7 +351,6 @@ ALTER TABLE `recordatorio`
 ALTER TABLE `reserva_turno`
   ADD PRIMARY KEY (`id_ReservaTurno`),
   ADD KEY `id_TipoServicio` (`id_TipoServicio`),
-  ADD KEY `id_horario` (`id_horario`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
@@ -385,8 +388,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `carrito_compras`
   ADD CONSTRAINT `carrito_compras_ibfk_1` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `carrito_compras_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `carrito_compras_ibfk_3` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id_compra`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `carrito_compras_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `compra`
@@ -404,12 +406,6 @@ ALTER TABLE `factura`
   ADD CONSTRAINT `factura_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `horario`
---
-ALTER TABLE `horario`
-  ADD CONSTRAINT `horario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Filtros para la tabla `producto`
 --
 ALTER TABLE `producto`
@@ -419,15 +415,13 @@ ALTER TABLE `producto`
 -- Filtros para la tabla `recordatorio`
 --
 ALTER TABLE `recordatorio`
-  ADD CONSTRAINT `recordatorio_ibfk_1` FOREIGN KEY (`id_ReservaTurno`) REFERENCES `reserva_turno` (`id_ReservaTurno`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `recordatorio_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `recordatorio_ibfk_1` FOREIGN KEY (`id_ReservaTurno`) REFERENCES `reserva_turno` (`id_ReservaTurno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `reserva_turno`
 --
 ALTER TABLE `reserva_turno`
   ADD CONSTRAINT `reserva_turno_ibfk_1` FOREIGN KEY (`id_TipoServicio`) REFERENCES `tipo_servicio` (`id_tipo_servicio`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reserva_turno_ibfk_2` FOREIGN KEY (`id_horario`) REFERENCES `horario` (`id_horario`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `reserva_turno_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
