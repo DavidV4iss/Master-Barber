@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-07-2024 a las 23:36:27
+-- Tiempo de generación: 23-07-2024 a las 00:23:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -269,14 +269,15 @@ INSERT INTO `tipo_servicio` (`id_tipo_servicio`, `nombre`, `descripcion`, `preci
 -- Estructura de tabla para la tabla `usuarios`
 --
 -- Creación: 12-07-2024 a las 16:10:17
+-- Última actualización: 22-07-2024 a las 22:07:28
 --
 
 CREATE TABLE `usuarios` (
   `id_usuario` varchar(255) NOT NULL,
   `nombre_usuario` varchar(255) NOT NULL,
   `email` varchar(55) NOT NULL,
-  `nit` int(55) NOT NULL,
-  `telefono` int(55) NOT NULL,
+  `nit` bigint(55) NOT NULL,
+  `telefono` bigint(55) NOT NULL,
   `contraseña` varchar(20) NOT NULL,
   `id_rol` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -286,9 +287,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `email`, `nit`, `telefono`, `contraseña`, `id_rol`) VALUES
-('U1', 'Cristian Rueda', 'cristianrueda0313@gmail.com', 1014481682, 2147483647, 'Cris7777.', 'R1'),
-('U2', 'Fidel Espitia', 'fideljoseespi10@gmail.com', 1028662003, 2147483647, 'fidel7777.', 'R2'),
-('U3', 'David Vaiss', 'cristianrueda0313@gmail.com', 1014481682, 2147483647, 'david7777.', 'R3');
+('U1', 'Cristian Rueda', 'cristianrueda0313@gmail.com', 1014481682, 3044495505, 'Cris7777.', 'R1'),
+('U2', 'Fidel Espitia', 'fideljoseespi10@gmail.com', 1028662003, 3142758305, 'fidel7777.', 'R2'),
+('U3', 'David Vaiss', 'cristianrueda0313@gmail.com', 1014481681, 3002894112, 'david7777.', 'R3');
 
 --
 -- Índices para tablas volcadas
